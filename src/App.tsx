@@ -1,5 +1,5 @@
 import { ChangeEvent, useState } from "react";
-import Calc from "./components/BMI";
+import Calc from "./components/BMICalc";
 
 const Status = {
   height: "",
@@ -8,6 +8,7 @@ const Status = {
 
 function App() {
   const [status, setStatus] = useState(Status);
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setStatus((prev) => ({
       ...prev,
@@ -52,43 +53,44 @@ function App() {
   };
 
   return (
-    <div className="form">
-      <Calc />
-      <div className="weight-input">
-        <label htmlFor="height">Weight: </label>
-        <input
-          id="weight"
-          type="number"
-          min="30"
-          max="300"
-          placeholder="50"
-          value={status.weight}
-          onChange={handleChange}
-        />{" "}
-        kg
-      </div>
-      <div className="height-input">
-        <label htmlFor="height">Height: </label>
-        <input
-          id="height"
-          type="number"
-          min="100"
-          max="200"
-          placeholder="150"
-          value={status.height}
-          onChange={handleChange}
-        />{" "}
-        cm
-      </div>
-      <button
-        id="bmi-cal"
-        className="bmi-btn"
-        onClick={handleClick}
-        disabled={status.weight === "" || status.height === ""}
-      >
-        Calculate
-      </button>
-    </div>
+    <Calc />
+    // <div className="form">
+    //   <h1>BMI Calculator</h1>
+    //   <div className="weight-input">
+    //     <label htmlFor="height">Weight: </label>
+    //     <input
+    //       id="weight"
+    //       type="number"
+    //       min="30"
+    //       max="300"
+    //       placeholder="50"
+    //       value={status.weight}
+    //       onChange={handleChange}
+    //     />{" "}
+    //     kg
+    //   </div>
+    //   <div className="height-input">
+    //     <label htmlFor="height">Height: </label>
+    //     <input
+    //       id="height"
+    //       type="number"
+    //       min="100"
+    //       max="200"
+    //       placeholder="150"
+    //       value={status.height}
+    //       onChange={handleChange}
+    //     />{" "}
+    //     cm
+    //   </div>
+    //   <button
+    //     id="bmi-cal"
+    //     className="bmi-btn"
+    //     onClick={handleClick}
+    //     disabled={status.weight === "" || status.height === ""}
+    //   >
+    //     Calculate
+    //   </button>
+    // </div>
   );
 }
 
