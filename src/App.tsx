@@ -1,13 +1,12 @@
 import BMICalc from "./components/BMICalc";
+import BMIChart from "./components/BMIChart";
 
 function App() {
   return (
     <div className="form">
-      <h1>BMI Calculator</h1>
-      <div className="form-input">
-        <BMICalc />
-      </div>
-      <div className="list-bmi"></div>
+      <h1>BMI Tracker</h1>
+      <BMICalc />
+      <BMIChart />
     </div>
   );
 }

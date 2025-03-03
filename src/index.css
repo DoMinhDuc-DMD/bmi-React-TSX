@@ -1,8 +1,54 @@
+body{
+    background-color: rgba(164, 154, 154, 0.5);
+}
+
 .form{
-    width: 400px;
-    margin: 100px auto;
+    width: 800px;
+    margin: 30px auto;
     padding: 20px;
-    text-align: center;
-    background-color: aquamarine;
+    background-color: white;
     border-radius: 5px;
+    text-align: center;
+}
+
+.formInput{
+    width: 100%;
+}
+
+.inputs{
+    display: flex;
+    justify-content: space-around;
+}
+
+label{
+    display: block;
+    left: 0;
+}
+
+input{
+    width: 200px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.bmi-btn{
+    width: 20%;
+    margin: 20px 0;
+    padding: 10px;
+    border-radius: 15px;
+    border: none;
+    color: white;
+    background-color: rgba(59, 36, 236, 0.5);
+    cursor: pointer;
+}
+
+.bmi-btn:hover{
+    background-color: rgba(59, 36, 236, 0.7);
+    cursor: pointer;
+}
+
+.bmi-btn:disabled{
+    color: white;
+    background-color: rgba(59, 36, 236, 0.3);
+    cursor:no-drop;
 }

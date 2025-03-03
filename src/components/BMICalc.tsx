@@ -4,26 +4,23 @@ import BMIInput from "./BMIInput";
 const Status = {
   height: "",
   weight: "",
-  date: new Date().toISOString().slice(0, 16),
+  date: new Date().toISOString().slice(0, 10),
   bmi: 0,
 };
 
-function getStatus() {
+export function getData() {
   const data = localStorage.getItem("BMI-Status");
   return data ? JSON.parse(data) : [];
 }
 
-function convertTime(dateString: string | number | Date) {
+export function convertTime(dateString: string | number | Date) {
   let date = new Date(dateString);
 
   let day = String(date.getDate()).padStart(2, "0");
   let month = String(date.getMonth() + 1).padStart(2, "0");
   let year = date.getFullYear();
 
-  let hour = String(date.getHours() + 7).padStart(2, "0");
-  let minute = String(date.getMinutes()).padStart(2, "0");
-
-  return `${day}/${month}/${year}, ${hour}:${minute}`;
+  return `${day}/${month}/${year}`;
 }
 
 const BMICalc = () => {
@@ -58,10 +55,10 @@ const BMICalc = () => {
     const newStatus = {
       ...status,
       bmi: parseFloat(bmiValue),
+      date: date,
     };
 
-    const history = getStatus();
-    console.log(newStatus);
+    const history = getData();
 
     if (!Array.isArray(history)) {
       localStorage.setItem("BMI-Status", JSON.stringify([newStatus]));
@@ -69,6 +66,7 @@ const BMICalc = () => {
       history.push(newStatus);
       localStorage.setItem("BMI-Status", JSON.stringify(history));
     }
+    console.log(history);
     setStatus(Status);
   };
 
@@ -80,14 +78,12 @@ const BMICalc = () => {
   };
 
   return (
-    <>
-      <BMIInput
-        handleChange={handleChange}
-        handleClick={handleClick}
-        height={status.height}
-        weight={status.weight}
-      />
-    </>
+    <BMIInput
+      handleChange={handleChange}
+      handleClick={handleClick}
+      height={status.height}
+      weight={status.weight}
+    />
   );
 };
 
