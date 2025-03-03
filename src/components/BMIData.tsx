@@ -1,8 +1,16 @@
 import { convertTime, getData } from "./BMICalc";
 
-const LineChartData = () => {
+const BMIData = (selectedYear: string, selectedMonth: string) => {
   const data = getData();
-  const labelData = data.map((item: any) => convertTime(item.date));
+
+  const filteredData = data.filter((item: any) => {
+    const year = new Date(item.date);
+    return selectedYear && year.getFullYear() === parseInt(selectedYear);
+  });
+
+  const labelData = filteredData.map((item: any) =>
+    convertTime(new Date(item.date).toLocaleString()).slice(0, 5)
+  );
   const bmiData = data.map((item: any) => item.bmi);
 
   return {
@@ -19,4 +27,4 @@ const LineChartData = () => {
   };
 };
 
-export default LineChartData;
+export default BMIData;

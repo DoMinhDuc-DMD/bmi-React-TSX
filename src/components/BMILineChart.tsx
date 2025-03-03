@@ -9,7 +9,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import LineChartData from "./BMIData";
+import BMIData from "./BMIData";
 
 ChartJS.register(
   CategoryScale,
@@ -21,7 +21,12 @@ ChartJS.register(
   Legend
 );
 
-export const LineGraph = () => {
+type Types = {
+  selectedYear: string;
+  selectedMonth: string;
+};
+
+export const BMILineChart = ({ selectedYear, selectedMonth }: Types) => {
   const options = {};
-  return <Line options={options} data={LineChartData()} />;
+  return <Line options={options} data={BMIData(selectedYear, selectedMonth)} />;
 };

@@ -66,7 +66,6 @@ const BMICalc = () => {
       history.push(newStatus);
       localStorage.setItem("BMI-Status", JSON.stringify(history));
     }
-    console.log(history);
     setStatus(Status);
   };
 
