@@ -1,17 +1,30 @@
-import { convertTime, getData } from "./BMICalc";
+import { getData } from "./SupportFunc";
 
 const BMIData = (selectedYear: string, selectedMonth: string) => {
   const data = getData();
 
-  const filteredData = data.filter((item: any) => {
-    const year = new Date(item.date);
-    return selectedYear && year.getFullYear() === parseInt(selectedYear);
+  const filterYearData = data.filter((item: any) => {
+    const year = new Date(item.date).getFullYear();
+    return selectedYear && year === parseInt(selectedYear);
   });
 
-  const labelData = filteredData.map((item: any) =>
-    convertTime(new Date(item.date).toLocaleString()).slice(0, 5)
+  let labelData = filterYearData.map((item: any) =>
+    new Date(item.date).toLocaleString().slice(0, 3)
   );
-  const bmiData = data.map((item: any) => item.bmi);
+
+  let bmiData = filterYearData.map((item: any) => item.bmi);
+
+  if (selectedMonth) {
+    const filterMonthData = filterYearData.filter((item: any) => {
+      const month = new Date(item.date).getMonth();
+      return month - 1 === parseInt(selectedMonth);
+    });
+    labelData = filterMonthData.map((item: any) =>
+      new Date(item.date).toLocaleString().slice(0, 3)
+    );
+
+    bmiData = filterMonthData.map((item: any) => item.bmi);
+  }
 
   return {
     labels: labelData,

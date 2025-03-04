@@ -3,8 +3,9 @@ body{
 }
 
 .form{
-    width: 800px;
-    margin: 30px auto;
+    width: 60%;
+    height: 80%;
+    margin: 50px auto;
     padding: 20px;
     background-color: white;
     border-radius: 5px;
@@ -53,11 +54,41 @@ input{
     cursor:no-drop;
 }
 
-.selectChart{
-}
-
 .slt-year, .slt-month{
     padding: 5px;
     border-radius: 5px;
     margin: 5px 10px;
+}
+
+.formData{
+    display: flex;
+}
+
+.formData h1{
+    margin: 0 0 10px;
+}
+
+.formChart{
+    width: 50%;
+}
+
+.formChart canvas{
+}
+
+.formList{
+    width: 50%;
+}
+
+.listBMI{
+    list-style-type: none;
+    margin: 20px 0;
+    padding: 0;
+    height: 200px;
+    overflow-y:auto;
+}
+
+.listBMI li{
+    padding: 5px 10px;
+    display: flex;
+    justify-content: space-between;
 }

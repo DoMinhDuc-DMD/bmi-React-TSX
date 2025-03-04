@@ -1,6 +1,7 @@
 import { ChangeEvent, useState } from "react";
-import { getData } from "./BMICalc";
+import { getData } from "./SupportFunc";
 import { BMILineChart } from "./BMILineChart";
+import BMIList from "./BMIList";
 
 function BMIChart() {
   const data = getData();
@@ -22,7 +23,7 @@ function BMIChart() {
   };
 
   return (
-    <div className="formChart">
+    <div className="showData">
       <div className="selectChart">
         {/* Year Select */}
         <select
@@ -56,7 +57,13 @@ function BMIChart() {
           <option value="11">December</option>
         </select>
       </div>
-      <BMILineChart selectedYear={selectedYear} selectedMonth={selectedMonth} />
+      <div className="formData">
+        <BMILineChart
+          selectedYear={selectedYear}
+          selectedMonth={selectedMonth}
+        />
+        <BMIList selectedYear={selectedYear} selectedMonth={selectedMonth} />
+      </div>
     </div>
   );
 }

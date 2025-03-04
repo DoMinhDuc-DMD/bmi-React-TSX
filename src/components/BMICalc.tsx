@@ -1,5 +1,6 @@
 import { ChangeEvent, useState } from "react";
 import BMIInput from "./BMIInput";
+import { convertTime, getData } from "./SupportFunc";
 
 const Status = {
   height: "",
@@ -7,21 +8,6 @@ const Status = {
   date: new Date().toISOString().slice(0, 10),
   bmi: 0,
 };
-
-export function getData() {
-  const data = localStorage.getItem("BMI-Status");
-  return data ? JSON.parse(data) : [];
-}
-
-export function convertTime(dateString: string | number | Date) {
-  let date = new Date(dateString);
-
-  let day = String(date.getDate()).padStart(2, "0");
-  let month = String(date.getMonth() + 1).padStart(2, "0");
-  let year = date.getFullYear();
-
-  return `${day}/${month}/${year}`;
-}
 
 const BMICalc = () => {
   const [status, setStatus] = useState(Status);
@@ -38,7 +24,7 @@ const BMICalc = () => {
       { min: 0, max: 15, text: "Very severely underweight" },
       { min: 15, max: 16, text: "Severely underweight" },
       { min: 16, max: 18.5, text: "Underweight" },
-      { min: 18.5, max: 25, text: "Normal (healthy weight)" },
+      { min: 18.5, max: 25, text: "Normal" },
       { min: 25, max: 30, text: "Overweight" },
       { min: 30, max: 35, text: "Moderately obese" },
       { min: 35, max: 40, text: "Severely obese" },
@@ -64,6 +50,7 @@ const BMICalc = () => {
       localStorage.setItem("BMI-Status", JSON.stringify([newStatus]));
     } else {
       history.push(newStatus);
+      history.sort((a: any, b: any) => Date.parse(b.date) - Date.parse(a.date));
       localStorage.setItem("BMI-Status", JSON.stringify(history));
     }
     setStatus(Status);
