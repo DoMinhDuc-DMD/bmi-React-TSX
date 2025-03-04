@@ -3,9 +3,9 @@ import BMIInput from "./BMIInput";
 import { convertTime, getData } from "./SupportFunc";
 
 const Status = {
-  height: "",
   weight: "",
-  date: new Date().toISOString().slice(0, 10),
+  height: "",
+  date: new Date().toISOString(),
   bmi: 0,
 };
 
@@ -49,8 +49,13 @@ const BMICalc = () => {
     if (!Array.isArray(history)) {
       localStorage.setItem("BMI-Status", JSON.stringify([newStatus]));
     } else {
-      history.push(newStatus);
-      history.sort((a: any, b: any) => Date.parse(b.date) - Date.parse(a.date));
+      const existData = history.findIndex((item: any) => item.date === date);
+      if (existData !== -1) {
+        history[existData] = newStatus;
+      } else {
+        history.push(newStatus);
+      }
+      history.sort((a: any, b: any) => Date.parse(a.date) - Date.parse(b.date));
       localStorage.setItem("BMI-Status", JSON.stringify(history));
     }
     setStatus(Status);

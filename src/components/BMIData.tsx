@@ -8,11 +8,24 @@ const BMIData = (selectedYear: string, selectedMonth: string) => {
     return selectedYear && year === parseInt(selectedYear);
   });
 
-  let labelData = filterYearData.map((item: any) =>
-    new Date(item.date).toLocaleString("en-US", { month: "long" })
+  const monthMap = new Map();
+
+  filterYearData.forEach((item: any) => {
+    const month = new Date(item.date).getMonth();
+    if (!monthMap.has(month)) {
+      monthMap.set(month, []);
+    }
+    monthMap.get(month).push(item.bmi);
+  });
+
+  let labelData = Array.from(monthMap.keys()).map((month) =>
+    new Date(0, month).toLocaleString("en-US", { month: "long" })
   );
 
-  let bmiData = filterYearData.map((item: any) => item.bmi);
+  let bmiData = Array.from(monthMap.values()).map((bmiArray: number[]) => {
+    const total = bmiArray.reduce((sum, bmi) => sum + bmi, 0);
+    return parseFloat((total / bmiArray.length).toFixed(2));
+  });
 
   if (selectedMonth) {
     const filterMonthData = filterYearData.filter((item: any) => {
