@@ -29,9 +29,13 @@ type Types = {
 export const BMILineChart = ({ selectedYear, selectedMonth }: Types) => {
   const options = {};
   return (
-    <div className="formChart">
-      <h1>BMI Chart</h1>
-      <Line options={options} data={BMIData(selectedYear, selectedMonth)} />
+    <div className="formChart w-[50%] text-center">
+      <h1 className="text-xl font-medium">BMI Chart</h1>
+      <Line
+        className="bg-gray-200 rounded-sm p-2"
+        options={options}
+        data={BMIData(selectedYear, selectedMonth)}
+      />
     </div>
   );
 };

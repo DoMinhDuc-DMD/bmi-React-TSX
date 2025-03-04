@@ -5,14 +5,14 @@ import BMIList from "./BMIList";
 
 function BMIChart() {
   const data = getData();
+  const [selectedYear, setSelectedYear] = useState("");
+  const [selectedMonth, setSelectedMonth] = useState("");
+
   const getYearData = data.map((item: any) => {
     const date = new Date(item.date);
     return date.getFullYear();
   });
   const uniqueYears = [...new Set(getYearData)];
-
-  const [selectedYear, setSelectedYear] = useState("");
-  const [selectedMonth, setSelectedMonth] = useState("");
 
   const handleYearChange = (e: ChangeEvent<HTMLSelectElement>) => {
     setSelectedYear(e.target.value);
@@ -24,10 +24,10 @@ function BMIChart() {
 
   return (
     <div className="showData">
-      <div className="selectChart">
+      <div className="selectChart flex justify-center items-center my-4 gap-x-5">
         {/* Year Select */}
         <select
-          className="slt-year"
+          className="slt-year border rounded-md py-1 px-2"
           defaultValue="Select Year"
           onChange={handleYearChange}
         >
@@ -38,7 +38,7 @@ function BMIChart() {
         </select>
         {/* Month Select */}
         <select
-          className="slt-month"
+          className="slt-month border rounded-md py-1 px-2"
           defaultValue="Select Month"
           onChange={handleMonthChange}
         >
@@ -57,7 +57,7 @@ function BMIChart() {
           <option value="11">December</option>
         </select>
       </div>
-      <div className="formData">
+      <div className="formData flex gap-x-1">
         <BMILineChart
           selectedYear={selectedYear}
           selectedMonth={selectedMonth}

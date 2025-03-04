@@ -6,9 +6,9 @@ export function getData() {
 export function convertTime(dateString: string | number | Date) {
   let date = new Date(dateString);
 
-  let day = String(date.getDate()).padStart(2, "0");
-  let month = String(date.getMonth() + 1).padStart(2, "0");
+  let day = String(date.getDate());
+  let month = date.toLocaleString("en-US", { month: "long" });
   let year = date.getFullYear();
 
-  return `${day}/${month}/${year}`;
+  return `${month} ${day} ${year}`;
 }

@@ -9,7 +9,7 @@ const BMIData = (selectedYear: string, selectedMonth: string) => {
   });
 
   let labelData = filterYearData.map((item: any) =>
-    new Date(item.date).toLocaleString().slice(0, 3)
+    new Date(item.date).toLocaleString("en-US", { month: "long" })
   );
 
   let bmiData = filterYearData.map((item: any) => item.bmi);
@@ -17,10 +17,10 @@ const BMIData = (selectedYear: string, selectedMonth: string) => {
   if (selectedMonth) {
     const filterMonthData = filterYearData.filter((item: any) => {
       const month = new Date(item.date).getMonth();
-      return month - 1 === parseInt(selectedMonth);
+      return month === parseInt(selectedMonth);
     });
     labelData = filterMonthData.map((item: any) =>
-      new Date(item.date).toLocaleString().slice(0, 3)
+      new Date(item.date).getDate()
     );
 
     bmiData = filterMonthData.map((item: any) => item.bmi);
