@@ -2,6 +2,7 @@ import { ChangeEvent, useState } from "react";
 import { getData } from "./SupportFunc";
 import { BMILineChart } from "./BMILineChart";
 import BMIList from "./BMIList";
+import { RestartAltRounded } from "@mui/icons-material";
 
 function BMIChart() {
   const data = getData();
@@ -37,6 +38,10 @@ function BMIChart() {
     setSelectedMonth(e.target.value);
   };
 
+  const handleReset = () => {
+    window.location.reload();
+  };
+
   return (
     <div className="showData">
       <div className="selectChart flex justify-center items-center my-4 gap-x-5">
@@ -65,6 +70,10 @@ function BMIChart() {
             </option>
           ))}
         </select>
+        <RestartAltRounded
+          className="border rounded cursor-pointer"
+          onClick={handleReset}
+        />
       </div>
       <div className="formData flex gap-x-1">
         <BMILineChart
