@@ -7,6 +7,7 @@ const Status = {
   height: "",
   date: new Date().toISOString(),
   bmi: 0,
+  msg: "",
 };
 
 const BMICalc = () => {
@@ -35,13 +36,14 @@ const BMICalc = () => {
       (item) =>
         parseFloat(bmiValue) >= item.min && parseFloat(bmiValue) <= item.max
     );
-    let msg = `Today is ${date}. Your BMI is ${bmiValue}. You are ${category?.text}`;
+    let msg = `Your BMI is ${bmiValue} on ${date}. You are ${category?.text}.`;
     alert(msg);
 
     const newStatus = {
       ...status,
       bmi: parseFloat(bmiValue),
       date: date,
+      msg: msg,
     };
 
     const history = getData();

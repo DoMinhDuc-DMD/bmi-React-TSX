@@ -26,9 +26,11 @@ export default function BMIList({
     <div className="formList w-[50%] text-center">
       <h1 className="text-xl font-medium">BMI List</h1>
       <ul className="listBMI bg-gray-200 rounded-sm p-2 h-[213px] overflow-y-auto">
-        {filteredData.map((item: any, index: number) => (
-          <ListItem key={index} bmi={item.bmi} time={item.date} />
-        ))}
+        {filteredData
+          .map((item: any, index: number) => (
+            <ListItem key={index} msg={item.msg} />
+          ))
+          .reverse()}
       </ul>
     </div>
   );
