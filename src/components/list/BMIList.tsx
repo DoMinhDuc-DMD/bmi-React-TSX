@@ -23,9 +23,9 @@ export default function BMIList({
     : filterYearData;
 
   return (
-    <div className="formList w-[50%] text-center">
+    <div className="w-[50%] text-center">
       <h1 className="text-xl font-medium">BMI List</h1>
-      <ul className="listBMI bg-gray-200 rounded-sm p-2 h-[213px] overflow-y-auto">
+      <ul className="bg-gray-200 rounded-sm p-2 h-[213px] overflow-y-auto">
         {filteredData
           .map((item: any, index: number) => (
             <ListItem key={index} bmi={item.bmi} time={item.date} />

@@ -43,11 +43,10 @@ function BMIChart() {
   };
 
   return (
-    <div className="showData">
-      <div className="selectChart flex justify-center items-center my-4 gap-x-5">
-        {/* Year Select */}
+    <div>
+      <div className="flex justify-center items-center my-4 gap-x-5">
         <select
-          className="slt-year border rounded-md py-1 px-2"
+          className="border rounded-md py-1 px-2 cursor-pointer"
           defaultValue="Select Year"
           onChange={handleYearChange}
         >
@@ -56,9 +55,8 @@ function BMIChart() {
             <option key={index}>{year}</option>
           ))}
         </select>
-        {/* Month Select */}
         <select
-          className="slt-month border rounded-md py-1 px-2"
+          className="border rounded-md py-1 px-2 cursor-pointer"
           defaultValue="Select Month"
           onChange={handleMonthChange}
         >
@@ -75,7 +73,7 @@ function BMIChart() {
           onClick={handleReset}
         />
       </div>
-      <div className="formData flex gap-x-1">
+      <div className="flex gap-x-1">
         <BMILineChart
           selectedYear={selectedYear}
           selectedMonth={selectedMonth}
