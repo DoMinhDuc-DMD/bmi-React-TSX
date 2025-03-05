@@ -1,6 +1,6 @@
 import { ChangeEvent, useState } from "react";
 import BMIInput from "./BMIInput";
-import { convertTime, getData } from "./SupportFunc";
+import { convertTime, getData } from "../SupportFunc";
 
 const Status = {
   weight: "",

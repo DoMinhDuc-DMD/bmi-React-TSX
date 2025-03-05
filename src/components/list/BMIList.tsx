@@ -1,5 +1,5 @@
 import { ListItem } from "./BMIListItem";
-import { getData } from "./SupportFunc";
+import { getData } from "../SupportFunc";
 
 export default function BMIList({
   selectedYear,

@@ -1,7 +1,7 @@
 import { ChangeEvent, useState } from "react";
-import { getData } from "./SupportFunc";
+import { getData } from "../SupportFunc";
 import { BMILineChart } from "./BMILineChart";
-import BMIList from "./BMIList";
+import BMIList from "../list/BMIList";
 import { RestartAltRounded } from "@mui/icons-material";
 
 function BMIChart() {

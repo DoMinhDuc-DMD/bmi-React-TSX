@@ -1,5 +1,5 @@
-import BMICalc from "./components/BMICalc";
-import BMIChart from "./components/BMIChart";
+import BMICalc from "./components/input/BMICalc";
+import BMIChart from "./components/chart/BMIChart";
 
 function App() {
   return (

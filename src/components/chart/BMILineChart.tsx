@@ -9,7 +9,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import BMIData from "./BMIData";
+import BMIData from "../BMIData";
 
 ChartJS.register(
   CategoryScale,
