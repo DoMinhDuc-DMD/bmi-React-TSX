@@ -47,7 +47,7 @@ const BMIData = (selectedYear: string, selectedMonth: string) => {
         data: bmiData,
         fill: false,
         borderColor: "rgb(75, 192, 192)",
-        tension: 0.4,
+        tension: 0.1,
       },
     ],
   };

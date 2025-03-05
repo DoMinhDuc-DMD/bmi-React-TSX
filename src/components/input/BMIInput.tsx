@@ -21,7 +21,7 @@ const BMIInput = ({
           <br />
           <input
             id="weight"
-            className="w-[80%] p-2 rounded border"
+            className="w-[80%] px-5 py-3 rounded-4xl border"
             type="number"
             placeholder="50"
             max="150"
@@ -35,7 +35,7 @@ const BMIInput = ({
           <br />
           <input
             id="height"
-            className="w-[80%] p-2 rounded border"
+            className="w-[80%] px-5 py-3 rounded-4xl border"
             type="number"
             placeholder="150"
             max="200"
@@ -47,7 +47,7 @@ const BMIInput = ({
       </div>
       <button
         id="bmi-cal"
-        className="py-2 px-7 bg-blue-400 rounded-2xl hover:bg-blue-700 hover:text-white hover:cursor-pointer disabled:bg-blue-400 disabled:text-black disabled:cursor-no-drop"
+        className="py-2 px-7 bg-blue-400 rounded-4xl hover:bg-blue-700 hover:text-white hover:cursor-pointer disabled:bg-blue-400 disabled:text-black disabled:cursor-no-drop"
         onClick={handleClick}
         disabled={!weight || !height}
       >
