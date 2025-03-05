@@ -41,17 +41,19 @@ function BMIChart() {
   };
 
   const handleReset = () => {
-    window.location.reload();
+    setSelectedYear("");
   };
 
   return (
     <div>
-      <div className="flex justify-center items-center my-4 gap-x-5">
+      <div className="flex justify-end items-center my-2 gap-x-2">
         <Selects
           handleYearChange={handleYearChange}
           handleMonthChange={handleMonthChange}
           uniqueYears={uniqueYears}
           availableMonths={availableMonths}
+          selectedYear={selectedYear}
+          selectedMonth={selectedMonth}
         />
         <RestartAltRounded
           className="border rounded cursor-pointer"

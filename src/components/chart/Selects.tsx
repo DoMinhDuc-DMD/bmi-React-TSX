@@ -5,33 +5,45 @@ export default function Selects({
   handleMonthChange,
   uniqueYears,
   availableMonths,
+  selectedYear,
+  selectedMonth,
 }: {
   handleYearChange: (e: ChangeEvent<HTMLSelectElement>) => void;
   handleMonthChange: (e: ChangeEvent<HTMLSelectElement>) => void;
   uniqueYears: number[];
   availableMonths: number[];
+  selectedYear: string;
+  selectedMonth: string;
 }) {
   return (
     <>
+      {selectedYear && (
+        <select
+          className="border rounded-md py-1 px-2 cursor-pointer"
+          value={selectedMonth}
+          onChange={handleMonthChange}
+        >
+          <option value="" disabled>
+            Select Month
+          </option>
+          {availableMonths.map((month, index) => (
+            <option key={index} value={month}>
+              {new Date(0, month).toLocaleString("en-US", { month: "long" })}
+            </option>
+          ))}
+        </select>
+      )}
       <select
         className="border rounded-md py-1 px-2 cursor-pointer"
-        defaultValue="Select Year"
+        value={selectedYear}
         onChange={handleYearChange}
       >
-        <option disabled>Select Year</option>
-        {uniqueYears.map((year: any, index: number) => (
-          <option key={index}>{year}</option>
-        ))}
-      </select>
-      <select
-        className="border rounded-md py-1 px-2 cursor-pointer"
-        defaultValue="Select Month"
-        onChange={handleMonthChange}
-      >
-        <option disabled>Select Month</option>
-        {availableMonths.map((month: any, index: any) => (
-          <option key={index} value={month}>
-            {new Date(0, month).toLocaleString("en-US", { month: "long" })}
+        <option value="" disabled>
+          Select Year
+        </option>
+        {uniqueYears.map((year, index) => (
+          <option key={index} value={year}>
+            {year}
           </option>
         ))}
       </select>
