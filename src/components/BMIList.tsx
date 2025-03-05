@@ -28,7 +28,7 @@ export default function BMIList({
       <ul className="listBMI bg-gray-200 rounded-sm p-2 h-[213px] overflow-y-auto">
         {filteredData
           .map((item: any, index: number) => (
-            <ListItem key={index} msg={item.msg} />
+            <ListItem key={index} bmi={item.bmi} time={item.date} />
           ))
           .reverse()}
       </ul>

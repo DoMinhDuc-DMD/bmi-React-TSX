@@ -7,15 +7,30 @@ function BMIChart() {
   const data = getData();
   const [selectedYear, setSelectedYear] = useState("");
   const [selectedMonth, setSelectedMonth] = useState("");
+  const [availableMonths, setAvailableMonths] = useState<number[]>([]);
 
   const getYearData = data.map((item: any) => {
     const date = new Date(item.date);
     return date.getFullYear();
   });
+
   const uniqueYears = [...new Set(getYearData)];
 
   const handleYearChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    setSelectedYear(e.target.value);
+    const year = e.target.value;
+    setSelectedYear(year);
+
+    const filterYearData = data.filter((item: any) => {
+      const date = new Date(item.date);
+      return date.getFullYear().toString() === year;
+    });
+
+    const getMonthData = filterYearData.map((item: any) =>
+      new Date(item.date).getMonth()
+    );
+
+    const uniqueMonths = [...new Set<number>(getMonthData)] as number[];
+    setAvailableMonths(uniqueMonths);
   };
 
   const handleMonthChange = (e: ChangeEvent<HTMLSelectElement>) => {
@@ -43,18 +58,12 @@ function BMIChart() {
           onChange={handleMonthChange}
         >
           <option disabled>Select Month</option>
-          <option value="0">January</option>
-          <option value="1">February</option>
-          <option value="2">March</option>
-          <option value="3">April</option>
-          <option value="4">May</option>
-          <option value="5">June</option>
-          <option value="6">July</option>
-          <option value="7">August</option>
-          <option value="8">September</option>
-          <option value="9">October</option>
-          <option value="10">November</option>
-          <option value="11">December</option>
+
+          {availableMonths.map((month, index) => (
+            <option key={index} value={month}>
+              {new Date(0, month).toLocaleString("en-US", { month: "long" })}
+            </option>
+          ))}
         </select>
       </div>
       <div className="formData flex gap-x-1">
