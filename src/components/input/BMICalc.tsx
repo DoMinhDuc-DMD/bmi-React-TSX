@@ -59,6 +59,7 @@ const BMICalc = () => {
       localStorage.setItem("BMI-Status", JSON.stringify(history));
     }
     setStatus(Status);
+    window.location.reload();
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {

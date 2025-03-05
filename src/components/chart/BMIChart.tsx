@@ -3,6 +3,7 @@ import { getData } from "../SupportFunc";
 import { BMILineChart } from "./BMILineChart";
 import BMIList from "../list/BMIList";
 import { RestartAltRounded } from "@mui/icons-material";
+import Selects from "./Selects";
 
 function BMIChart() {
   const data = getData();
@@ -15,7 +16,7 @@ function BMIChart() {
     return date.getFullYear();
   });
 
-  const uniqueYears = [...new Set(getYearData)];
+  const uniqueYears = [...new Set<number>(getYearData)];
 
   const handleYearChange = (e: ChangeEvent<HTMLSelectElement>) => {
     const year = e.target.value;
@@ -31,6 +32,7 @@ function BMIChart() {
     );
 
     const uniqueMonths = [...new Set<number>(getMonthData)] as number[];
+    setSelectedMonth("");
     setAvailableMonths(uniqueMonths);
   };
 
@@ -45,29 +47,12 @@ function BMIChart() {
   return (
     <div>
       <div className="flex justify-center items-center my-4 gap-x-5">
-        <select
-          className="border rounded-md py-1 px-2 cursor-pointer"
-          defaultValue="Select Year"
-          onChange={handleYearChange}
-        >
-          <option disabled>Select Year</option>
-          {uniqueYears.map((year: any, index: number) => (
-            <option key={index}>{year}</option>
-          ))}
-        </select>
-        <select
-          className="border rounded-md py-1 px-2 cursor-pointer"
-          defaultValue="Select Month"
-          onChange={handleMonthChange}
-        >
-          <option disabled>Select Month</option>
-
-          {availableMonths.map((month, index) => (
-            <option key={index} value={month}>
-              {new Date(0, month).toLocaleString("en-US", { month: "long" })}
-            </option>
-          ))}
-        </select>
+        <Selects
+          handleYearChange={handleYearChange}
+          handleMonthChange={handleMonthChange}
+          uniqueYears={uniqueYears}
+          availableMonths={availableMonths}
+        />
         <RestartAltRounded
           className="border rounded cursor-pointer"
           onClick={handleReset}
