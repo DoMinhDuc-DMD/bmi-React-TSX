@@ -29,7 +29,7 @@ type Types = {
 export const BMILineChart = ({ selectedYear, selectedMonth }: Types) => {
   const options = {};
   return (
-    <div className="w-[50%] text-center">
+    <div className="w-[55%] text-center">
       <h1 className="text-xl font-medium">BMI Chart</h1>
       <Line
         className="bg-gray-200 rounded-sm p-2"

@@ -46,9 +46,9 @@ export default function BMIList({
   });
 
   return (
-    <div className="w-[50%] text-center">
+    <div className="w-[45%] text-center">
       <h1 className="text-xl font-medium">BMI List</h1>
-      <ul className="bg-gray-200 rounded-sm p-2 h-[213px] overflow-y-auto">
+      <ul className="bg-gray-200 rounded-sm p-2 h-[209px] overflow-y-auto">
         {selectedYear && selectedMonth
           ? filteredData
               .map((item: any, index: number) => (
