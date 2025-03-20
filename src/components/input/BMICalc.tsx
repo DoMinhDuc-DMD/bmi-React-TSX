@@ -14,10 +14,7 @@ const BMICalc = () => {
 
   const handleClick = () => {
     const heightInMeters = parseFloat(status.height) / 100;
-    const bmiValue = (
-      parseFloat(status.weight) /
-      (heightInMeters * heightInMeters)
-    ).toFixed(2);
+    const bmiValue = (parseFloat(status.weight) / (heightInMeters * heightInMeters)).toFixed(2);
     const date = convertTime(status.date);
 
     const bmiCategories = [
@@ -31,10 +28,7 @@ const BMICalc = () => {
       { min: 40, max: Infinity, text: "Very severely obese" },
     ];
 
-    const category = bmiCategories.find(
-      (item) =>
-        parseFloat(bmiValue) >= item.min && parseFloat(bmiValue) <= item.max
-    );
+    const category = bmiCategories.find((item) => parseFloat(bmiValue) >= item.min && parseFloat(bmiValue) <= item.max);
     let msg = `Your BMI is ${bmiValue} on ${date} (${category?.text}).`;
     alert(msg);
 
@@ -69,14 +63,7 @@ const BMICalc = () => {
     }));
   };
 
-  return (
-    <BMIInput
-      handleChange={handleChange}
-      handleClick={handleClick}
-      height={status.height}
-      weight={status.weight}
-    />
-  );
+  return <BMIInput handleChange={handleChange} handleClick={handleClick} height={status.height} weight={status.weight} />;
 };
 
 export default BMICalc;

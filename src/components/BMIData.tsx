@@ -18,9 +18,7 @@ const BMIData = (selectedYear: string, selectedMonth: string) => {
     monthMap.get(month).push(item.bmi);
   });
 
-  let labelData = Array.from(monthMap.keys()).map((month) =>
-    new Date(0, month).toLocaleString("en-US", { month: "long" })
-  );
+  let labelData = Array.from(monthMap.keys()).map((month) => new Date(0, month).toLocaleString("en-US", { month: "long" }));
 
   let bmiData = Array.from(monthMap.values()).map((bmiArray: number[]) => {
     const total = bmiArray.reduce((sum, bmi) => sum + bmi, 0);
@@ -32,9 +30,7 @@ const BMIData = (selectedYear: string, selectedMonth: string) => {
       const month = new Date(item.date).getMonth();
       return month === parseInt(selectedMonth);
     });
-    labelData = filterMonthData.map((item: any) =>
-      new Date(item.date).getDate()
-    );
+    labelData = filterMonthData.map((item: any) => new Date(item.date).getDate());
 
     bmiData = filterMonthData.map((item: any) => item.bmi);
   }

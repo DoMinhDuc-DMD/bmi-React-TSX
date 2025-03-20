@@ -18,11 +18,7 @@ export default function Selects({
   return (
     <>
       {selectedYear && (
-        <select
-          className="border rounded-lg py-1 px-2 cursor-pointer"
-          value={selectedMonth}
-          onChange={handleMonthChange}
-        >
+        <select className="border rounded-lg py-1 px-2 cursor-pointer" value={selectedMonth} onChange={handleMonthChange}>
           <option value="" disabled>
             Select Month
           </option>
@@ -33,11 +29,7 @@ export default function Selects({
           ))}
         </select>
       )}
-      <select
-        className="border rounded-lg py-1 px-2 cursor-pointer"
-        value={selectedYear}
-        onChange={handleYearChange}
-      >
+      <select className="border rounded-lg py-1 px-2 cursor-pointer" value={selectedYear} onChange={handleYearChange}>
         <option value="" disabled>
           Select Year
         </option>

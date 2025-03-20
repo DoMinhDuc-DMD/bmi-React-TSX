@@ -27,9 +27,7 @@ function BMIChart() {
       return date.getFullYear().toString() === year;
     });
 
-    const getMonthData = filterYearData.map((item: any) =>
-      new Date(item.date).getMonth()
-    );
+    const getMonthData = filterYearData.map((item: any) => new Date(item.date).getMonth());
 
     const uniqueMonths = [...new Set<number>(getMonthData)] as number[];
     setSelectedMonth("");
@@ -55,16 +53,10 @@ function BMIChart() {
           selectedYear={selectedYear}
           selectedMonth={selectedMonth}
         />
-        <RestartAltRounded
-          className="border rounded cursor-pointer"
-          onClick={handleReset}
-        />
+        <RestartAltRounded className="border rounded cursor-pointer" onClick={handleReset} />
       </div>
       <div className="flex gap-x-1">
-        <BMILineChart
-          selectedYear={selectedYear}
-          selectedMonth={selectedMonth}
-        />
+        <BMILineChart selectedYear={selectedYear} selectedMonth={selectedMonth} />
         <BMIList selectedYear={selectedYear} selectedMonth={selectedMonth} />
       </div>
     </div>

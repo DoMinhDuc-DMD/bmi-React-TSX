@@ -1,13 +1,7 @@
 import { ListItem } from "./BMIListItem";
 import { getData } from "../SupportFunc";
 
-export default function BMIList({
-  selectedYear,
-  selectedMonth,
-}: {
-  selectedYear: string;
-  selectedMonth: string;
-}) {
+export default function BMIList({ selectedYear, selectedMonth }: { selectedYear: string; selectedMonth: string }) {
   const data = getData();
 
   const filterYearData = data.filter((item: any) => {
@@ -31,18 +25,11 @@ export default function BMIList({
   });
 
   const avgBMIMonth = monthArray.map((month) => {
-    const monthData = filterYearData.filter(
-      (item: any) => new Date(item.date).getMonth() === month
-    );
+    const monthData = filterYearData.filter((item: any) => new Date(item.date).getMonth() === month);
 
-    const total = monthData.reduce(
-      (sum: number, item: any) => sum + parseFloat(item.bmi),
-      0
-    );
+    const total = monthData.reduce((sum: number, item: any) => sum + parseFloat(item.bmi), 0);
 
-    return monthData.length
-      ? parseFloat((total / monthData.length).toFixed(2))
-      : 0;
+    return monthData.length ? parseFloat((total / monthData.length).toFixed(2)) : 0;
   });
 
   return (
@@ -52,13 +39,7 @@ export default function BMIList({
         {selectedYear && selectedMonth
           ? filteredData
               .map((item: any, index: number) => (
-                <ListItem
-                  key={index}
-                  bmi={item.bmi}
-                  time={item.date}
-                  selectedYear={selectedYear}
-                  selectedMonth={selectedMonth}
-                />
+                <ListItem key={index} bmi={item.bmi} time={item.date} selectedYear={selectedYear} selectedMonth={selectedMonth} />
               ))
               .reverse()
           : selectedYear

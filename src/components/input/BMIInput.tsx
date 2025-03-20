@@ -7,12 +7,7 @@ type BMIInputProps = {
   weight: string;
 };
 
-const BMIInput = ({
-  handleChange,
-  handleClick,
-  height,
-  weight,
-}: BMIInputProps) => {
+const BMIInput = ({ handleChange, handleClick, height, weight }: BMIInputProps) => {
   return (
     <div className="text-center">
       <div>
